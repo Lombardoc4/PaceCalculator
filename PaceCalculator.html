@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pace Calculator</title>
+    
+    <style>
+        form { display: flex; }
+        .input {
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+    <h1>Pace Calculator</h1>
+    <form>
+        <div class="input">
+            <label for="distance">Distance</label>
+            <input type="number" name="distance" id="distance" placeholder="Distance in miles">
+        </div>
+        <div class="input">
+            <label for="hours">Hours</label>
+            <input type="number" name="hours" id="hours" placeholder="Hours">
+        </div>
+        <div class="input">
+            <label for="minutes">Minutes</label>
+            <input type="number" name="minutes" id="minutes" placeholder="Minutes">
+        </div>
+        <div class="input">
+            <label for="seconds">Seconds</label>
+            <input type="number" name="seconds" id="seconds" placeholder="Seconds">
+        </div>
+        <input type="submit" value="Calculate">
+    </form>
+    
+    <script>
+        // Calculate pace minutes per mile
+        
+        // Get the form
+        const form = document.querySelector('form');
+        
+        // Listen for submit event
+        form.addEventListener('submit', () => {
+            // Validate Inputs
+            
+            // Get the inputs
+            const distance = document.querySelector('#distance').value;
+            const hours = document.querySelector('#hours').value;
+            const minutes = document.querySelector('#minutes').value;
+            const seconds = document.querySelector('#seconds').value;
+            
+            // Calculate pace
+            const pace = (hours * 60 + minutes * 1 + seconds / 60) / distance;
+            
+            // Display pace
+            alert(`Your pace is ${Math.floor(pace)} minutes and ${Math.floor((pace - Math.floor(pace)) * 60)} seconds per mile.`);
+            
+        })
+        
+    </script>
+</body>
+</html>
