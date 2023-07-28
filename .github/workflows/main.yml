@@ -29,6 +29,9 @@ jobs:
   deploy:
     name: Deploy
     needs: build
+    permissions:
+      pages: write
+      id-token: write
     runs-on: ubuntu-latest
     steps:
       - name: Download artifact
