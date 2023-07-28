@@ -1,65 +1,65 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pace Calculator</title>
-    
-    <style>
-        form { display: flex; }
-        .input {
-            display: flex;
-            flex-direction: column;
-        }
-    </style>
-</head>
-<body>
-    <h1>Pace Calculator</h1>
-    <form>
-        <div class="input">
-            <label for="distance">Distance</label>
-            <input type="number" step="0.01" name="distance" id="distance" placeholder="Distance in miles">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + TS</title>
+  </head>
+  <body>
+    <div id="app">
+      <div>
+        <a href="https://vitejs.dev" target="_blank">
+          <img src="/runners.png" class="logo" alt="Vite logo" />
+        </a>
+        <h1>Pace Calculator</h1>
+
+
+        <div class="card">
+
+          <div style="display: flex; padding: 1em; gap: 1em;">
+
+            <div class="time-display">
+              <label id="hour-display" for="hour-input">0</label>
+              :
+              <label id="min-display" for="min-input">00</label>
+              :
+              <label id="sec-display" for="sec-input">00</label>
+
+              <!-- Inputs -->
+              <input  id="hour-input" type="number"/>
+              <input  id="min-input" type="number"/>
+              <input  id="sec-input" type="number"/>
+            </div>
+
+            <div>
+              <label for="dis-input">
+                <span id="dis-display">0</span>
+                <span id="dis-units">mi</span>
+              </label>
+              <input id="dis-input" type="number"/>
+            </div>
+
+            </div>
+
+            <div class="result">
+              <p>
+              <span id="res-miles">0:00</span>
+              / mi
+            </p>
+            <p class="secondary">
+              <span id="res-kilo">0:00</span>
+              / km
+            </p>
+
+          </div>
+
         </div>
-        <div class="input">
-            <label for="hours">Hours</label>
-            <input type="number" name="hours" id="hours" placeholder="Hours">
-        </div>
-        <div class="input">
-            <label for="minutes">Minutes</label>
-            <input type="number" name="minutes" id="minutes" placeholder="Minutes">
-        </div>
-        <div class="input">
-            <label for="seconds">Seconds</label>
-            <input type="number" name="seconds" id="seconds" placeholder="Seconds">
-        </div>
-        <input type="submit" value="Calculate">
-    </form>
-    
-    <script>
-        // Calculate pace minutes per mile
-        
-        // Get the form
-        const form = document.querySelector('form');
-        
-        // Listen for submit event
-        form.addEventListener('submit', () => {
-            // Validate Inputs
-            
-            // Get the inputs
-            const distance = document.querySelector('#distance').value;
-            const hours = document.querySelector('#hours').value;
-            const minutes = document.querySelector('#minutes').value;
-            const seconds = document.querySelector('#seconds').value;
-            
-            // Calculate pace
-            const pace = (hours * 60 + minutes * 1 + seconds / 60) / distance;
-            
-            // Display pace
-            alert(`Your pace is ${Math.floor(pace)} minutes and ${Math.floor((pace - Math.floor(pace)) * 60)} seconds per mile.`);
-            
-        })
-        
-    </script>
-</body>
+        <p class="read-the-docs">
+          Click on the Vite and TypeScript logos to learn more
+        </p>
+
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
 </html>
