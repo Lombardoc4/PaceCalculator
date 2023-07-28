@@ -1,5 +1,5 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Roboto Mono', Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -33,20 +33,16 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  text-align: center;
+
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
-}
+  font-family: 'Bruno Ace SC', cursive;
+  /* font-family: 'Monoton', cursive; */
 
-
-input {
-  opacity: 0;
-  height: 0;
-  width: 0;
-  padding: 0;
-  border: 0;
 }
 
 #app {
@@ -59,31 +55,39 @@ input {
   height: 4em;
   will-change: filter;
   transition: filter 300ms;
+  padding: 1em;
+  border-radius: 2em;
 }
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
-.logo.vanilla:hover {
-  filter: drop-shadow(0 0 2em #3178c6aa);
-}
 
 .card {
-  padding: 1em 0;
-  font-size: 1.5em;
+  margin-top: 1em;
+  font-size: 2.5em;
   display: flex;
   flex-direction: column;
   text-align: center;
+  gap: 0.5em;
 }
 
-.read-the-docs {
-  color: #888;
+.card input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  pointer-events: none;
 }
+
 
 .result {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
-  font-size: 1em;
+  margin-top: 1em;
+  font-size: 0.8em;
   font-weight: 500;
   font-family: inherit;
   background-color: #1a1a1a;

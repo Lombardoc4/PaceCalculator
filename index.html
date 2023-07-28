@@ -2,6 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&family=Roboto+Mono&display=swap" rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + TS</title>
@@ -9,22 +12,17 @@
   <body>
     <div id="app">
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/runners.png" class="logo" alt="Vite logo" />
-        </a>
-        <h1>Pace Calculator</h1>
+        <img src="/runners.png" class="logo" alt="Shoe logo" />
+        <h1>
+          RunninRate
+        </h1>
 
 
         <div class="card">
 
-          <div style="display: flex; padding: 1em; gap: 1em;">
 
             <div class="time-display">
-              <label id="hour-display" for="hour-input">0</label>
-              :
-              <label id="min-display" for="min-input">00</label>
-              :
-              <label id="sec-display" for="sec-input">00</label>
+              <label id="hour-display" for="hour-input">0</label>:<label id="min-display" for="min-input">00</label>:<label id="sec-display" for="sec-input">00</label>
 
               <!-- Inputs -->
               <input  id="hour-input" type="number"/>
@@ -40,24 +38,21 @@
               <input id="dis-input" type="number"/>
             </div>
 
-            </div>
+            <!-- </div> -->
 
             <div class="result">
               <p>
-              <span id="res-miles">0:00</span>
-              / mi
+              <span id="res-miles">0:00</span>/mi
             </p>
             <p class="secondary">
-              <span id="res-kilo">0:00</span>
-              / km
+              <span id="res-kilo">0:00</span>/km
             </p>
 
-          </div>
 
         </div>
-        <p class="read-the-docs">
+        <!-- <p class="read-the-docs">
           Click on the Vite and TypeScript logos to learn more
-        </p>
+        </p> -->
 
     </div>
     <script type="module" src="/src/main.ts"></script>
