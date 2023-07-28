@@ -23,8 +23,7 @@ jobs:
       - name: Upload production-ready build files
         uses: actions/upload-artifact@v3
         with:
-          name: build
-          path: ./dist
+          path: .
 
   deploy:
     name: Deploy
@@ -32,15 +31,19 @@ jobs:
     permissions:
       pages: write
       id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Download artifact
         uses: actions/download-artifact@v3
         with:
           name: build
-          path: ./dist
+          path: .
       - name: Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v2
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+        # with:
+          # github_token: ${{ secrets.GITHUB_TOKEN }}
+          # publish_dir: ./dist
