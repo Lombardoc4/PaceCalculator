@@ -25,6 +25,8 @@ jobs:
 
   deploy:
     needs: build
+    permissions:
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
