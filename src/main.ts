@@ -1,101 +1,77 @@
-import './style.css'
-import { setupCounter } from './counter.ts'
-
-// TODO --- Migrate to calc function file
-
-const time = {
-  hours: 0,
-  minutes: 0,
-  seconds: 0,
-  pace: 0,
-  paceKilo: 0,
-}
-
+import "./style.css";
 
 const kiloPerMile = 0.621371;
+const paceTotal = {
+    miles: 0,
+    kilos: 0,
+};
 
 const result = {
-    mile: document.getElementById('res-miles') as HTMLSpanElement,
-    kilo: document.getElementById('res-kilo') as HTMLSpanElement,
-}
-
+    mile: document.getElementById("res-miles") as HTMLSpanElement,
+    kilo: document.getElementById("res-kilo") as HTMLSpanElement,
+};
 const input = {
-    distance: document.getElementById('dis-input') as HTMLInputElement,
-    hours: document.getElementById('hour-input') as HTMLInputElement,
-    minutes: document.getElementById('min-input') as HTMLInputElement,
-    seconds: document.getElementById('sec-input') as HTMLInputElement,
-}
-
-
+    distance: document.getElementById("dis-input") as HTMLInputElement,
+    hours: document.getElementById("hour-input") as HTMLInputElement,
+    minutes: document.getElementById("min-input") as HTMLInputElement,
+    seconds: document.getElementById("sec-input") as HTMLInputElement,
+};
 
 const calcPace = () => {
-    time.hours = parseInt(input.hours.value || '0');
-    time.minutes = parseInt(input.minutes.value || '0');
-    time.seconds = parseInt(input.seconds.value || '0');
-    const distance = parseInt(input.distance.value || '0');
+    const distance = parseInt(input.distance.value || "0");
+    const hours = parseInt(input.hours.value || "0");
+    const minutes = parseInt(input.minutes.value || "0");
+    const seconds = parseInt(input.seconds.value || "0");
 
-    if (distance === 0 || (time.hours === 0 && time.minutes === 0 && time.seconds === 0)){
-      return;
-    } else {
-      time.pace = ((time.hours * 60 + time.minutes * 1 + time.seconds / 60) / distance);
-      time.paceKilo = time.pace * kiloPerMile;
+    // If time or distance is 0 don't calculate
+    if (distance === 0 || (hours === 0 && minutes === 0 && seconds === 0)) {
+        return;
     }
 
-    const pace : {minutes: number, seconds: number} =  {
-      minutes: Math.floor(time.pace),
-      seconds: Math.floor((time.pace - Math.floor(time.pace)) * 60)
-    }
-    const paceKilo : {minutes: number, seconds: number} =  {
-      minutes: Math.floor(time.paceKilo),
-      seconds: Math.floor((time.paceKilo - Math.floor(time.paceKilo)) * 60)
-    }
+    paceTotal.miles = (hours * 60 + minutes * 1 + seconds / 60) / distance;
+    paceTotal.kilos = paceTotal.miles * kiloPerMile;
 
-    console.log('pace', pace);
-    console.log('paceKilo', paceKilo);
+    const pace: { minutes: number; seconds: number } = {
+        minutes: Math.floor(paceTotal.miles),
+        seconds: Math.floor((paceTotal.miles - Math.floor(paceTotal.miles)) * 60),
+    };
+    const paceKilo: { minutes: number; seconds: number } = {
+        minutes: Math.floor(paceTotal.kilos),
+        seconds: Math.floor((paceTotal.kilos - Math.floor(paceTotal.kilos)) * 60),
+    };
 
-
-    result.mile.innerHTML = pace.minutes + ':' + (pace.seconds <= 9 ? '0' : '') + pace.seconds ;
-    result.kilo.innerHTML = paceKilo.minutes + ':' + pace.minutes;
-
-}
-
-
-
+    // Update UI
+    result.mile.innerHTML = pace.minutes + ":" + (pace.seconds <= 9 ? "0" : "") + pace.seconds;
+    result.kilo.innerHTML = paceKilo.minutes + ":" + (paceKilo.seconds <= 9 ? "0" : "") + paceKilo.seconds;
+};
 
 const inputEvent = (e: Event) => {
-  const target = e.target as HTMLInputElement;
+    const target = e.target as HTMLInputElement;
+    const idKey = target.id.slice(0, target.id.indexOf("-"));
+    const display = document.getElementById(idKey + "-display") as HTMLSpanElement | HTMLLabelElement;
 
-  const idKey = target.id.slice(0, target.id.indexOf('-'))
-  const display = document.getElementById(idKey + '-display');
+    // maxLength Validation
+    const lengthLimit = idKey === "dis" ? 6 : 2;
+    if (target.value.length > lengthLimit) {
+        target.value = target.value.slice(0, lengthLimit);
+        return;
+    }
 
-  const lengthLimit = idKey === 'dis' ? 6 : 2;
-
-  if (target.value.length > lengthLimit) {
-    target.value = target.value.slice(0, lengthLimit);
-    return;
-  }
-
-  if (display) {
-    display.innerHTML = target.value  || '0';
-  }
-
-
-  if (display) {
-    if (idKey === 'dis' || idKey === 'hour') // Distance
-      display.innerHTML = target.value  || '0';
+    // Format input
+    if (idKey === "dis" || idKey === "hour")
+        // Distance
+        display.innerHTML = target.value || "0";
     else if (target.value.length === 1)
-      display.innerHTML = 0 + target.value ;
-    else
-      display.innerHTML = target.value || '00';
-  }
+        // Single Digit Time
+        display.innerHTML = 0 + target.value;
+    // Double Digit Time or No Time
+    else display.innerHTML = target.value || "00";
 
-  calcPace();
-
-}
+    calcPace();
+};
 
 calcPace();
-
-input.hours.addEventListener('input',  inputEvent);
-input.minutes.addEventListener('input',  inputEvent);
-input.seconds.addEventListener('input',  inputEvent);
-input.distance.addEventListener('input',  inputEvent);
+input.hours.addEventListener("input", inputEvent);
+input.minutes.addEventListener("input", inputEvent);
+input.seconds.addEventListener("input", inputEvent);
+input.distance.addEventListener("input", inputEvent);
