@@ -14,9 +14,7 @@
   -webkit-text-size-adjust: 100%;
 }
 
-* {
-  margin: 0;
-}
+* { margin: 0; }
 
 body {
   margin: 0;
@@ -28,13 +26,13 @@ body {
 }
 
 h1 {
-  font-size: 3.2em;
+  font-size: 2.6em;
   line-height: 1.1;
   font-family: 'Bruno Ace SC', cursive;
 }
 
 #app {
-  max-width: 1280px;
+  width: clamp(320px, 50%, 400px);
   margin: 0 auto;
   padding: 2rem;
 }
@@ -46,13 +44,9 @@ h1 {
   margin: 1em;
   border-radius: 1em;
 }
-/* .logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-} */
-
 .card {
-  margin-top: 1em;
-  font-size: 2.5em;
+  margin-top: 0.5em;
+  font-size: 3em;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -60,40 +54,64 @@ h1 {
 }
 
 .card input {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 0;
-  opacity: 0;
-  pointer-events: none;
+  font-size: 0.75em;
+  line-height: 1;
+  width: 1ch;
+  margin: 0.05em;
+  padding: 0.25em;
+  font-family: 'Roboto Mono', system-ui, sans-serif;
+  border: 1px solid #006d64;
+  color: #009f91;
+  border-radius: 0.1em;
+}
+.card input::placeholder{ color: #009f91; }
+
+#distance-input {
+  width: 6ch;
+  text-align: right;
 }
 
-.result {
+.time-display, .distance-display, .distance-units {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.time-display span { font-size: 0.5em;}
+
+.distance-display, .distance-units {
+  gap: 0.25em;
+}
+
+#result {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
-  margin-top: 1em;
   font-size: 0.8em;
   font-weight: 500;
   font-family: inherit;
   background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
+  /* cursor: pointer; */
   color: #ffffff;
+
+  display: flex;
+  flex-direction: column;
 }
 
-.result .secondary{ font-size: 0.6em; }
-
-
-.drop-shadow {
-  box-shadow: 0 0 1em -0.5em #000;
+#result.swap {
+  flex-direction: column-reverse;
 }
+
+.secondary{
+  font-size: 0.5em;
+}
+
+.drop-shadow { box-shadow: 0 0 1em -0.5em #000; }
 
 @media (prefers-color-scheme: light) {
   :root {
     color: #009f91;
     background-color: #ffffff;
+
   }
   .drop-shadow {
     box-shadow: 0 0 4em -1em #009f91;

@@ -11,7 +11,6 @@
   </head>
   <body>
     <div id="app">
-      <div>
         <img src="/runners.png" class="logo drop-shadow" alt="Shoe logo" />
         <h1>
           RunninRate
@@ -20,35 +19,38 @@
 
         <div class="card">
 
+          <div class="time-display">
+            <!-- Inputs -->
+            <input id="hour-input" placeholder="0" class="drop-shadow" type="number"/>
+            <input id="hour-input2" placeholder="0" class="drop-shadow" type="number"/><span>:</span><input id="min-input" placeholder="0" class="drop-shadow" type="number"/>
+            <input id="min-input2" placeholder="0" class="drop-shadow" type="number"/><span>:</span><input id="sec-input" placeholder="0" class="drop-shadow" type="number"/>
+            <input id="sec-input2" placeholder="0" class="drop-shadow" type="number"/>
+          </div>
 
-            <div class="time-display">
-              <label id="hour-display" for="hour-input">0</label>:<label id="min-display" for="min-input">00</label>:<label id="sec-display" for="sec-input">00</label>
+          <div class="distance-display">
+            <input id="distance-input" placeholder="0.0" class="drop-shadow" type="number"/>
 
-              <!-- Inputs -->
-              <input  id="hour-input" type="number"/>
-              <input  id="min-input" type="number"/>
-              <input  id="sec-input" type="number"/>
-            </div>
+            <label for="distance-input" class="distance-units">
+              <span id="dis-units">mi</span>
 
-            <div>
-              <label for="dis-input">
-                <span id="dis-display">0</span>
-                <span id="dis-units">mi</span>
-              </label>
-              <input id="dis-input" type="number"/>
-            </div>
+              <svg id="unit-swap" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M11 5.466V4H5a4 4 0 0 0-3.584 5.777.5.5 0 1 1-.896.446A5 5 0 0 1 5 3h6V1.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192Zm3.81.086a.5.5 0 0 1 .67.225A5 5 0 0 1 11 13H5v1.466a.25.25 0 0 1-.41.192l-2.36-1.966a.25.25 0 0 1 0-.384l2.36-1.966a.25.25 0 0 1 .41.192V12h6a4 4 0 0 0 3.585-5.777.5.5 0 0 1 .225-.67Z"/>
+              </svg>
 
-            <!-- </div> -->
+              <span id="dis-units-secondary" class="secondary">km</span>
+            </label>
+          </div>
 
-            <div class="result drop-shadow">
-              <p>
+          <!-- </div> -->
+
+          <div id="result" class="drop-shadow">
+            <p class="pace">
               <span id="res-miles">0:00</span>/mi
             </p>
-            <p class="secondary">
+            <p class="secondary pace" >
               <span id="res-kilo">0:00</span>/km
             </p>
-
-
+          </div>
         </div>
 
     </div>
