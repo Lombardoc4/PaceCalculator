@@ -50,12 +50,13 @@ const calcPace = () => {
 
 const swapUnits = () => {
     const unitUpdate = units === 'mi' ? 'km' : 'mi';
+    const paceRes = [...document.querySelectorAll('.pace')] as HTMLParagraphElement[];
 
     // Swap on the ui
     (document.getElementById('dis-units') as HTMLSpanElement).innerHTML = unitUpdate;
     (document.getElementById('dis-units-secondary') as HTMLSpanElement).innerHTML = units;
     (document.getElementById('result') as HTMLDivElement).classList.toggle('swap');
-    const paceRes = [...document.querySelectorAll('.pace')] as HTMLParagraphElement[];
+
     paceRes.forEach((el) => {
         el.classList.toggle('secondary');
     })
@@ -86,9 +87,11 @@ inputElements.forEach((el, index) => {
             target.value = target.value.slice(0, -1);
             return;
         }
-        if (idKey !== "dis")
+
+        if (idKey !== "distance")
             target.value = first ?? ""; // first will be undefined when backspace was entered, so set the input to ""
-        else target.value.length > 6 && (target.value = target.value.slice(0, -1)); // 6 char limit
+        else
+            target.value.length > 6 && (target.value = target.value.slice(0, -1)); // 6 char limit
 
         const lastInputBox = index === inputElements.length - 1;
         const didInsertContent = first !== undefined;

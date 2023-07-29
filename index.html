@@ -5,15 +5,18 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&family=Roboto+Mono&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + TS</title>
+    <title>Pacer</title>
   </head>
   <body>
     <div id="app">
         <img src="/runners.png" class="logo drop-shadow" alt="Shoe logo" />
         <h1>
-          RunninRate
+          Pacer
         </h1>
 
 
@@ -21,14 +24,14 @@
 
           <div class="time-display">
             <!-- Inputs -->
-            <input id="hour-input" placeholder="0" class="drop-shadow" type="number"/>
-            <input id="hour-input2" placeholder="0" class="drop-shadow" type="number"/><span>:</span><input id="min-input" placeholder="0" class="drop-shadow" type="number"/>
-            <input id="min-input2" placeholder="0" class="drop-shadow" type="number"/><span>:</span><input id="sec-input" placeholder="0" class="drop-shadow" type="number"/>
-            <input id="sec-input2" placeholder="0" class="drop-shadow" type="number"/>
+            <input id="hour-input" placeholder="0" class="drop-shadow" type="text"/>
+            <input id="hour-input2" placeholder="0" class="drop-shadow" type="text"/><span>:</span><input id="min-input" placeholder="0" class="drop-shadow" type="text"/>
+            <input id="min-input2" placeholder="0" class="drop-shadow" type="text"/><span>:</span><input id="sec-input" placeholder="0" class="drop-shadow" type="text"/>
+            <input id="sec-input2" placeholder="0" class="drop-shadow" type="text"/>
           </div>
 
           <div class="distance-display">
-            <input id="distance-input" placeholder="0.0" class="drop-shadow" type="number"/>
+            <input id="distance-input" placeholder="0.0" class="drop-shadow" type="text"/>
 
             <label for="distance-input" class="distance-units">
               <span id="dis-units">mi</span>
@@ -51,9 +54,14 @@
               <span id="res-kilo">0:00</span>/km
             </p>
           </div>
+
+          <p class="secondary">
+            Save Time
+            <br/><span class="secondary">(coming soon)</span></p>
         </div>
 
-    </div>
+
+      </div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
