@@ -31,6 +31,15 @@ h1 {
   font-family: 'Bruno Ace SC', cursive;
 }
 
+input[type='number'] {
+  -moz-appearance:textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
 #app {
   width: clamp(320px, 50%, 400px);
   margin: 0 auto;
