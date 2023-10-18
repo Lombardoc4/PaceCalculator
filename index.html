@@ -22,14 +22,14 @@
 
           <div class="time-display">
             <!-- Inputs -->
-            <input id="hour-input" placeholder="0" class="drop-shadow" type="number" step="1"/>
-            <input id="hour-input2" placeholder="0" class="drop-shadow" type="number"/><span>:</span><input id="min-input" placeholder="0" class="drop-shadow" type="text"/>
-            <input id="min-input2" placeholder="0" class="drop-shadow" type="number"/><span>:</span><input id="sec-input" placeholder="0" class="drop-shadow" type="text"/>
-            <input id="sec-input2" placeholder="0" class="drop-shadow" type="number"/>
+            <input id="hour-input" pattern="[0-9]" placeholder="0" class="drop-shadow" type="tel"/>
+            <input id="hour-input2" pattern="[0-9]" placeholder="0" class="drop-shadow" type="tel"/><span>:</span><input id="min-input" placeholder="0" class="drop-shadow" type="tel" pattern="[0-9]"/>
+            <input id="min-input2" pattern="[0-9]" placeholder="0" class="drop-shadow" type="tel"/><span>:</span><input id="sec-input" placeholder="0" class="drop-shadow" type="tel" pattern="[0-9]"/>
+            <input id="sec-input2" pattern="[0-9]" placeholder="0" class="drop-shadow" type="tel"/>
           </div>
 
           <div class="distance-display">
-            <input id="distance-input" placeholder="0.0" class="drop-shadow" type="text"/>
+            <input id="distance-input" placeholder="0.0" class="drop-shadow" type="number"/>
 
             <label for="distance-input" class="distance-units">
               <span id="dis-units">mi</span>
