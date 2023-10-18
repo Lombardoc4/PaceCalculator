@@ -14,7 +14,7 @@
   -webkit-text-size-adjust: 100%;
 }
 
-* { margin: 0; }
+* { margin: 0;}
 
 body {
   margin: 0;
@@ -23,6 +23,10 @@ body {
   min-width: 320px;
   min-height: 100vh;
   text-align: center;
+}
+
+body.no-overflow {
+  overflow: hidden;
 }
 
 h1 {
@@ -40,11 +44,49 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
 
+button  {
+  border-radius: 8px;
+  border: 1px solid #1a1a1a;
+  padding: 0.6rem 1.2rem;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: #1a1a1a;
+}
+
 #app {
   width: clamp(320px, 50%, 400px);
   margin: 0 auto;
   /* padding: 2rem; */
 
+}
+
+#map-container {
+  display: none;
+
+  position: fixed;
+  inset: 0;
+
+  flex-direction: column;
+  align-items: center;
+
+  background-color: rgba(26,26,26,0.5);
+}
+
+#map-container.active {
+  display: flex;
+}
+
+#iframeMap {
+  /* margin: auto; */
+  height: 95%;
+  width: 100%;
+}
+
+#map-container button {
+  margin-block: 1rem;
+  font-size: 1rem;
+  /* position: absolute; */
+  /* bottom: 2rem; */
 }
 
 .logo {

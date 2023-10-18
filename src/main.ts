@@ -14,6 +14,8 @@ const result = {
 
 const inputElements = [...document.querySelectorAll(".card input")] as HTMLInputElement[];
 
+const getById = (id: string) => document.getElementById(id);
+
 const calcPace = () => {
     const values = inputElements.map(({ value }) => value);
     const hours = parseInt(values[0] + values[1] || "0");
@@ -53,9 +55,9 @@ const swapUnits = () => {
     const paceRes = [...document.querySelectorAll('.pace')] as HTMLParagraphElement[];
 
     // Swap on the ui
-    (document.getElementById('dis-units') as HTMLSpanElement).innerHTML = unitUpdate;
-    (document.getElementById('dis-units-secondary') as HTMLSpanElement).innerHTML = units;
-    (document.getElementById('result') as HTMLDivElement).classList.toggle('swap');
+    (getById('dis-units') as HTMLSpanElement).innerHTML = unitUpdate;
+    (getById('dis-units-secondary') as HTMLSpanElement).innerHTML = units;
+    (getById('result') as HTMLDivElement).classList.toggle('swap');
 
     paceRes.forEach((el) => {
         el.classList.toggle('secondary');
@@ -65,7 +67,19 @@ const swapUnits = () => {
     calcPace();
 }
 
-(document.getElementById('unit-swap') as HTMLElement).addEventListener('click', swapUnits)
+const toggleMap = () => {
+    const iframeMap = getById('map-container') as HTMLDivElement;
+    iframeMap.classList.toggle('active');
+    document.body.classList.toggle('no-overflow');
+
+}
+
+(document.querySelectorAll('.mapToggler') as NodeList).forEach((el) => {
+    el.addEventListener("click", () => toggleMap());
+});
+
+
+(getById('unit-swap') as HTMLElement).addEventListener('click', swapUnits);
 
 inputElements.forEach((el, index) => {
     el.addEventListener("keydown", (e: KeyboardEvent) => {
