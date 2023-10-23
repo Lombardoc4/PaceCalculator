@@ -93,6 +93,11 @@ button  {
   /* bottom: 2rem; */
 }
 
+.mapToggler {
+  background-color: white;
+  color: #009f91;
+}
+
 .logo {
   height: 4rem;
   will-change: filter;
@@ -177,5 +182,10 @@ button  {
     color: #009f91;
   }
 
+
+.mapToggler {
+  background-color: black;
+  color: white;
+}
 
 }
